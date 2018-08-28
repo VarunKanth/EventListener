@@ -1,0 +1,92 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <style>
+        /*#outer {
+            left: 50%;
+            top: 50%;
+            position: fixed;
+            height: 200px;
+            width: 200px;
+            background-color: black;
+            align: center;
+        }*/
+
+        #panel {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        #outer {
+            position: absolute;
+            height: 500px;
+            width: 500px;
+            background-color: #c62828;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 50%;
+            margin-top: -250px;
+            transition: transform 0.5s ease-in;
+        }
+        #inner {
+            position: relative;
+            height: 25%;
+            width: 25%;
+            background-color: #2e7d32;
+        }
+        .leftCorner {
+            top: -37.5%;
+            left: -37.5%;
+            transition: top 5s;
+            animation-name: leftCorner;
+            animation-duration: 1s;
+        }
+        .rightCorner {
+            right: -37.5%;
+            bottom: -37.5%;
+            animation-name: rightCorner;
+            animation-duration: 1s;
+        }
+        @keyframes leftCorner{
+            0% {top: 0;}
+            100% {top: -37.5%;}
+            0% {left: 0;}
+            100% {left: -37.5%;}
+        }
+        @keyframes rightCorner{
+            0% {right: 187.5px;}
+            100% {right: -37.5%;}
+            0% {bottom: 187.5px;}
+            100% {bottom: -37.5%;}
+        }
+    </style>
+    <title>EventListeners</title>
+</head>
+<body>
+    <div id="panel">
+        <div id="outer">
+            <div id="inner">
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("outer").addEventListener("click",function() {
+            var classListOfInnerDiv = document.getElementById("inner").classList;
+            if (classListOfInnerDiv.length == 0){
+                document.getElementById("outer").style.transform = "translate(-20px)";
+                document.getElementById("inner").classList.add("leftCorner");
+            }
+            else if(document.getElementById("inner").classList.contains("leftCorner")){
+                document.getElementById("inner").classList.remove("leftCorner");
+                document.getElementById("inner").classList.add("rightCorner");
+            }
+       },false);
+    </script>
+</body>
+</html>
